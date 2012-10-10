@@ -1,6 +1,7 @@
 %h4 Saml IDP Login
-
+%h5= "ACS URL: #{@saml_acs_url}"
 = simple_form_for :user, url: "/saml/auth", method: :post do |f|
+  = hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
   Email:
   %br
   = f.input :email, label: false, input_html: {value: "nate.gardner+samltest@synctree.com"}

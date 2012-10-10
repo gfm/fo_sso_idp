@@ -7,6 +7,7 @@ FoSsoIdp::Application.routes.draw do
   post  '/saml/auth' => 'saml_idp#create'
 
   get   '/saml/init' => 'saml#init'
+  post  '/saml/consume' => 'saml#consume'
   
   root  :to => 'saml#init'
 

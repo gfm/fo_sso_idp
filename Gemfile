@@ -9,6 +9,8 @@ gem 'haml-rails'
 gem 'ruby-saml'
 gem 'ruby-saml-idp'
 gem 'simple_form'
+gem 'mysql2'
+gem "activerecord-sqlserver-adapter", "~> 3.2.9"
 gem 'sqlite3'
 
 # Gems used only for assets and not required
