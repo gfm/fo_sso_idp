@@ -6,7 +6,9 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'haml-rails'
+gem 'ruby-saml'
 gem 'ruby-saml-idp'
+gem 'simple_form'
 gem 'sqlite3'
 
 # Gems used only for assets and not required
@@ -19,6 +21,11 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do
+  gem 'pry'
+  gem 'pry-nav'
 end
 
 gem 'jquery-rails'

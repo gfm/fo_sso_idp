@@ -1,0 +1,20 @@
+%h4 Saml IDP Login
+
+= simple_form_for :user, url: "/saml/auth", method: :post do |f|
+  Email:
+  %br
+  = f.input :email, label: false, input_html: {value: "nate.gardner+samltest@synctree.com"}
+  %br
+  Password:
+  %br
+  = f.input :password, label: false, input_html: {value: "123456"}
+  %br
+  = f.submit "Login"
+
+%br
+%br
+Test Account
+%br
+%b e: nate.gardner+samltest@synctree.com
+%br
+%b p: 123456
