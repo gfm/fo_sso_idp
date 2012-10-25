@@ -7,7 +7,7 @@ class SamlController < ApplicationController
     def consume
       response          = Onelogin::Saml::Response.new(params[:SAMLResponse])
       response.settings = saml_settings
-
+      
       if response.is_valid? && user = User.find_by_email(response.name_id)
         authorize_success(user)
       else
@@ -31,14 +31,15 @@ class SamlController < ApplicationController
       settings = Onelogin::Saml::Settings.new
 
       # local consume test
-      settings.assertion_consumer_service_url = "http://localhost:3000/saml/consume"
+      #settings.assertion_consumer_service_url = "http://localhost:3000/saml/consume"
       
       # fitorbit.dev consume test
-      # settings.assertion_consumer_service_url = "http://fitorbit.dev/saml/consume"
+      #settings.assertion_consumer_service_url = "http://fitorbit.dev/saml/consume"
+      settings.assertion_consumer_service_url = "http://qa1.myfitorbit.com/saml/consume"
 
       settings.idp_sso_target_url             = "http://localhost:3000/saml/auth"
-      settings.issuer                         = request.host
-      
+      settings.issuer                         = "http://fitorbit.dev"
+
       settings.idp_cert_fingerprint           = "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D"
       settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
       

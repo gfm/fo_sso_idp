@@ -4,7 +4,7 @@
   = hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
   Email:
   %br
-  = f.input :email, label: false, input_html: {value: "nate.gardner+samltest@synctree.com"}
+  = f.input :email, label: false, input_html: {value: "nate.gardner+wpactive@synctree.com"}
   %br
   Password:
   %br
@@ -15,7 +15,13 @@
 %br
 %br
 Test Account
-%br
-%b e: nate.gardner+samltest@synctree.com
-%br
-%b p: 123456
+%p
+  %h5 Active User
+  %b e: nate.gardner+wpactive@synctree.com
+  %br
+  %b p: 123456
+%p
+  %h5 Inactive User
+  %b e: nate.gardner+wpinactive@synctree.com
+  %br
+  %b p: 123456

@@ -6,9 +6,10 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'haml-rails'
-gem 'ruby-saml'
+gem 'ruby-saml', :git => "https://github.com/synctree/ruby-saml.git", :branch => "inclusive_canonicalization"
+#gem 'ruby-saml-idp', :git => "https://github.com/synctree/ruby-saml-idp.git"
 gem 'ruby-saml-idp'
-gem 'simple_form'
+gem 'simple_form' 
 gem 'mysql2'
 gem "activerecord-sqlserver-adapter", "~> 3.2.9"
 gem 'sqlite3'
@@ -28,6 +29,8 @@ end
 group :development do
   gem 'pry'
   gem 'pry-nav'
+  gem 'pry-stack_explorer'
+  gem 'pry-exception_explorer'
 end
 
 gem 'jquery-rails'
