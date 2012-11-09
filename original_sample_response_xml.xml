@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<Response Version="2.0" IssueInstant="2012-05-22T22:17:13Z" ID="_3b4a27f5da7652aa597a436fef29707f2fbd" Destination="http://vendor.coursestage.com/ext/wellpoint/consumer.php" xmlns="urn:oasis:names:tc:SAML:2.0:protocol">
+  
+  <ns1:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity" xmlns:ns1="urn:oasis:names:tc:SAML:2.0:assertion">saml.uat.anthem.com:testVendor</ns1:Issuer>
+  
+  <Status>
+    <StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/>
+  </Status>
+  
+  <ns2:Assertion Version="2.0" IssueInstant="2012-05-22T22:17:13Z" ID="_07955ec0bcf8612772323657e6f81d2ad80d" xmlns:ns2="urn:oasis:names:tc:SAML:2.0:assertion">
+    <ns2:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">saml.uat.anthem.com:testVendor</ns2:Issuer>
+    
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+      
+      <ds:SignedInfo>
+        <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+        <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+        <ds:Reference URI="#_07955ec0bcf8612772323657e6f81d2ad80d">
+          <ds:Transforms>
+            <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+            <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+          <ds:DigestValue>2YpYftxSRUS8NRRoR5E8r1+XGe4=</ds:DigestValue>
+        </ds:Reference>
+      </ds:SignedInfo>
+      
+      <ds:SignatureValue> aBhTAsdZaqMmH3FReBJkaI//qQOcl9wVsU7mnXNnnnuwqjouzHXYJiXFLwPx4R4vDDvh77htzDks rVJ/4i/x/Jeb2DQpkovC3bHA1rT4SzS1UM0MNqNGiQu5DATtcmjVz/pje6fWb8NtoNjQfxiJM+Pn nhDY/5c8yRP+IxYB5EE= </ds:SignatureValue>
+      <ds:KeyInfo>
+        <ds:X509Data>
+          <ds:X509Certificate>
+          MIIEJzCCAw+gAwIBAgIDASskMA0GCSqGSIb3DQEBBQUAMGExCzAJBgNVBAYTAlVTMRMwEQYDVQQK EwpBbnRoZW0gSW5jMRIwEAYDVQQLEwlFY29tbWVyY2UxKTAnBgNVBAMTIEFudGhlbSBJbmMgQ2Vy dGlmaWNhdGUgQXV0aG9yaXR5MB4XDTEyMDUxMTE0MDAwM1oXDTEzMDUxMTE0MDAwM1owdTELMAkG A1UEBhMCVVMxETAPBgNVBAgTCFZpcmdpbmlhMREwDwYDVQQHEwhSaWNobW9uZDERMA8GA1UEChMI c2VjdXJpdHkxDzANBgNVBAsTBkFudGhlbTEcMBoGA1UEAxMTc2FtbC51YXQuYW50aGVtLmNvbTCB nzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAr38w2FSeHTwrp16zL66Kaq6N50UD8vqA6+mls4Vb HmgGBwv15zfn28dD6mE19ZP3jEU+jDxaEhw1cBsNmSs6Orz+11dnagAsXMf8P4VJtTBN//AP3zF6 znKzkTgkzlqktsAooW6gbFbXSD5ts/kb2g/z371duGMa2+uTw5rMM6sCAwEAAaOCAVYwggFSMAwG A1UdEwEB/wQCMAAwKQYDVR0RBCIwIIEeU3VwcG9ydE5ldGVncml0eUB3ZWxscG9pbnQuY29tMA4G A1UdDwEB/wQEAwIE8DCBogYDVR0jBIGaMIGXgBT6Gtw+Xaa1/fpfbMsoQNPgl6KqrKF5pHcwdTEL MAkGA1UEBhMCVVMxGDAWBgNVBAoTD0dURSBDb3Jwb3JhdGlvbjEnMCUGA1UECxMeR1RFIEN5YmVy VHJ1c3QgU29sdXRpb25zLCBJbmMuMSMwIQYDVQQDExpHVEUgQ3liZXJUcnVzdCBHbG9iYWwgUm9v dIIEBycWETBDBgNVHR8EPDA6MDigNqA0hjJodHRwOi8vY2RwMS5jb20tc3Ryb25nLWlkLm5ldC9D RFAvYW50aGVtc3NsLWNhLmNybDAdBgNVHQ4EFgQUU0lpj+mIKzktmddvWNai72HTElgwDQYJKoZI hvcNAQEFBQADggEBAILVEvhNJNj74UeIqwBuodmtSOjeMEgV8KzMFWB7ZjWfKMQhJ+wlqeaf6pEJ 2b0M4sqrV7MXtFLhV2P/fHl9IGDFYf6lZZARh1I/c0Fh5tDtjGpkJmKqaAv/F6wvEl7JnqVqv8nz nS5bIoo1tPMtFeIKN4/CIFKO2iTRn4mu8Q9sfETKR/yEYj5f3SJ6+DggQ0sUMWF4wT/77Uc6MsyR XFuriOO6RaY+AonGpuSP5GXcm3KJ8hTPtPTMpYGMnK6jiIqRZKWmh1BFtnVAGjV15Ak78DTvmu64 3p6MXsRovBoeNJlDVrBvWVF8cs5thZTHwhy8ip6cGW3nnwrzrTmmk7M= 
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </ds:KeyInfo>
+
+    </ds:Signature>
+    
+    <ns2:Subject>
+      <ns2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">_6b25ed45ff0bf3fb89b7fe0261f326d56c67</ns2:NameID>
+      <ns2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+        <ns2:SubjectConfirmationData Recipient="http://vendor.coursestage.com/ext/wellpoint/consumer.php" NotOnOrAfter="2012-05-22T22:18:43Z"/>
+      </ns2:SubjectConfirmation>
+    </ns2:Subject>
+
+    <ns2:Conditions NotOnOrAfter="2012-05-22T22:18:43Z" NotBefore="2012-05-22T22:16:43Z">
+      <ns2:AudienceRestriction>
+        <ns2:Audience>vendor.coursestage.com:test</ns2:Audience>
+      </ns2:AudienceRestriction>
+    </ns2:Conditions>
+
+    <ns2:AuthnStatement SessionNotOnOrAfter="2012-05-22T22:18:43Z" SessionIndex="lsb/YbprQcDp8z1qARMiwgC+DOw=hh03mQ==" AuthnInstant="2012-05-22T22:17:12Z">
+      <ns2:AuthnContext>
+        <ns2:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:Password</ns2:AuthnContextClassRef>
+      </ns2:AuthnContext>
+    </ns2:AuthnStatement>
+
+    <ns2:AttributeStatement>
+      <ns2:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="Brand">
+        <ns2:AttributeValue>Anthem</ns2:AttributeValue>
+      </ns2:Attribute>
+
+      <ns2:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="LastName">
+        <ns2:AttributeValue>user</ns2:AttributeValue>
+      </ns2:Attribute>
+
+      <ns2:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="FirstName">
+        <ns2:AttributeValue>test</ns2:AttributeValue>
+      </ns2:Attribute>
+
+      <ns2:Attribute NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic" Name="WlpUserId">
+        <ns2:AttributeValue>userId</ns2:AttributeValue>
+      </ns2:Attribute>
+    </ns2:AttributeStatement>
+
+  </ns2:Assertion>
+</Response>

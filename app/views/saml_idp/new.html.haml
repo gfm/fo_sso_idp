@@ -1,27 +1,8 @@
 %h4 Saml IDP Login
 %h5= "ACS URL: #{@saml_acs_url}"
-= simple_form_for :user, url: "/saml/auth", method: :post do |f|
+= simple_form_for :wellpoint_user, url: "/saml/auth", method: :post do |f|
   = hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
-  Email:
-  %br
-  = f.input :email, label: false, input_html: {value: "nate.gardner+wpactive@synctree.com"}
-  %br
-  Password:
-  %br
-  = f.input :password, label: false, input_html: {value: "123456"}
-  %br
-  = f.submit "Login"
-
-%br
-%br
-Test Account
-%p
-  %h5 Active User
-  %b e: nate.gardner+wpactive@synctree.com
-  %br
-  %b p: 123456
-%p
-  %h5 Inactive User
-  %b e: nate.gardner+wpinactive@synctree.com
-  %br
-  %b p: 123456
+  
+  Select Wellpoint User
+  %p= f.input :id, collection: WellpointUser.all, label: false, input_html: {value: '1'}
+  %p= f.submit "Login"

@@ -7,8 +7,9 @@ class SamlController < ApplicationController
     def consume
       response          = Onelogin::Saml::Response.new(params[:SAMLResponse])
       response.settings = saml_settings
-      
-      if response.is_valid? && user = User.find_by_email(response.name_id)
+      valid = response.is_valid?
+
+      if valid && user = WellpointUser.find_by_id(response.name_id)
         authorize_success(user)
       else
         authorize_failure(user)
@@ -31,17 +32,18 @@ class SamlController < ApplicationController
       settings = Onelogin::Saml::Settings.new
 
       # local consume test
-      #settings.assertion_consumer_service_url = "http://localhost:3000/saml/consume"
+      settings.assertion_consumer_service_url = "http://localhost:3000/saml/consume"
       
       # fitorbit.dev consume test
       #settings.assertion_consumer_service_url = "http://fitorbit.dev/saml/consume"
-      settings.assertion_consumer_service_url = "http://qa1.myfitorbit.com/saml/consume"
-
+      #settings.assertion_consumer_service_url = "http://www.qa1.myfitorbit.com/saml/consume"
+      
       settings.idp_sso_target_url             = "http://localhost:3000/saml/auth"
-      settings.issuer                         = "http://fitorbit.dev"
+      #settings.issuer                         = "http://fitorbit.dev"
+      settings.issuer                         = "http://localhost:3000"
 
       settings.idp_cert_fingerprint           = "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D"
-      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
       
       # Optional for most SAML IdPs
       # settings.authn_context = "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"

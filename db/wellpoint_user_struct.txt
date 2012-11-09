@@ -1,0 +1,30 @@
+id INT, rcrd_stts_cd CHAR(3), mbr_key CHAR(32), sbscrbr_id VARCHAR(15), frst_nm VARCHAR(50), mid_init_nm VARCHAR(15), lst_nm VARCHAR(50), mbr_sqnc_nbr VARCHAR(15), mbr_rltnshp_cd CHAR(3), brth_dt DATE, gndr_cd CHAR(3), email_adrs_txt VARCHAR(50), hc_id VARCHAR(20), mcid BIGINT, prmry_phone_nbr CHAR(10), alt_phone_nbr CHAR(10), mbrshp_sor_cd CHAR(8), src_grp_nbr CHAR(10), src_subgrp_nbr VARCHAR(15), prchsr_org_efctv_dt DATE, prchsr_org_trmntn_dt DATE, rnwl_dt DATE, mbr_incentive_efctv_dt DATE, mbr_incentive_trmn_dt DATE, incntv_prdct_cd CHAR(20), grp_cvr_fee TINYINT, created_at DATETIME, updated_at DATETIME
+
+
+
+id INT
+rcrd_stts_cd CHAR(3),
+mbr_key CHAR(32),
+sbscrbr_id VARCHAR(15),
+frst_nm VARCHAR(50),
+mid_init_nm VARCHAR(15),
+lst_nm VARCHAR(50),
+mbr_sqnc_nbr VARCHAR(15),
+mbr_rltnshp_cd CHAR(3),
+brth_dt DATE,
+gndr_cd CHAR(3),
+email_adrs_txt VARCHAR(50),
+hc_id VARCHAR(20),
+mcid bigint
+prmry_phone_nbr CHAR(10),
+alt_phone_nbr CHAR(10),
+mbrshp_sor_cd CHAR(8),
+src_grp_nbr CHAR(10),
+src_subgrp_nbr VARCHAR(15),
+prchsr_org_efctv_dt DATE,
+prchsr_org_trmntn_dt DATE,
+rnwl_dt DATE,
+mbr_incentive_efctv_dt DATE,
+mbr_incentive_trmn_dt DATE,
+incntv_prdct_cd CHAR(20),
+grp_cvr_fee TINYINT

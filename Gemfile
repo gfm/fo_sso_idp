@@ -6,7 +6,8 @@ gem 'rails', '3.2.6'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'haml-rails'
-gem 'ruby-saml', :git => "https://github.com/synctree/ruby-saml.git", :branch => "inclusive_canonicalization"
+#gem 'ruby-saml', :git => "https://github.com/synctree/ruby-saml.git", :branch => "inclusive_canonicalization"
+gem 'ruby-saml', '0.6.0'
 #gem 'ruby-saml-idp', :git => "https://github.com/synctree/ruby-saml-idp.git"
 gem 'ruby-saml-idp'
 gem 'simple_form' 
@@ -28,7 +29,8 @@ end
 
 group :development do
   gem 'pry'
-  gem 'pry-nav'
+  #gem 'pry-nav'
+  gem 'pry-debugger'
   gem 'pry-stack_explorer'
   gem 'pry-exception_explorer'
 end
