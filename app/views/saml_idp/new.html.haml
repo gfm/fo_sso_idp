@@ -1,8 +1,19 @@
-%h4 Saml IDP Login
-%h5= "ACS URL: #{@saml_acs_url}"
-= simple_form_for :wellpoint_user, url: "/saml/auth", method: :post do |f|
-  = hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
+/ %h4 Saml IDP Login
+/ %h5= "ACS URL: #{@saml_acs_url}"
+/ = simple_form_for :wellpoint_user, url: "/saml/auth", method: :post do |f|
+/   = hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
   
-  Select Wellpoint User
-  %p= f.input :id, collection: WellpointUser.all, label: false, input_html: {value: '1'}
-  %p= f.submit "Login"
+/   Select Wellpoint User
+/   %p= f.input :id, collection: WellpointUser.all, label: false, input_html: {value: '1'}
+/   %p= f.submit "Login"
+
+
+%div{ :style => "visibility:hidden;"}
+  = form_tag("/saml/auth") do
+    = hidden_field_tag("SAMLRequest", params[:SAMLRequest])
+    = submit_tag "Submit"
+
+:javascript
+  $(document).ready(function(){
+    document.forms[0].submit();
+  })

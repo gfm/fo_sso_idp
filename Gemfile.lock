@@ -1,3 +1,12 @@
+PATH
+  remote: /Users/nate/Projects/synctree/ruby-saml
+  specs:
+    ruby-saml (0.6.0)
+      canonix (= 0.1.1)
+      nokogiri
+      rsa
+      uuid (~> 2.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -114,10 +123,7 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
-    ruby-saml (0.6.0)
-      canonix (= 0.1.1)
-      nokogiri
-      uuid (~> 2.3)
+    rsa (0.1.4)
     ruby-saml-idp (0.3.2)
       uuid
     sass (3.2.1)
@@ -161,7 +167,7 @@ DEPENDENCIES
   pry-exception_explorer
   pry-stack_explorer
   rails (= 3.2.6)
-  ruby-saml (= 0.6.0)
+  ruby-saml!
   ruby-saml-idp
   sass-rails (~> 3.2.3)
   simple_form
