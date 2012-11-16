@@ -2,7 +2,8 @@ class SamlController < ApplicationController
 
     def init
       request = Onelogin::Saml::Authrequest.new
-      redirect_to(request.create(saml_settings(params[:wellpoint_user][:environment])))
+      ss = saml_settings(params[:wellpoint_user][:environment], params[:wellpoint_user][:id])
+      redirect_to(request.create(ss))
     end
 
     def consume
@@ -32,13 +33,13 @@ class SamlController < ApplicationController
 
     private
 
-    def saml_settings(environment)
+    def saml_settings(environment, id = nil)
       settings = Onelogin::Saml::Settings.new
-
-      settings.idp_sso_target_url              = "http://localhost:3000/saml/auth"
 
       settings.assertion_consumer_service_url = SSO_SETTINGS[environment]["assertion_consumer_service_url"]
       settings.issuer                         = SSO_SETTINGS[environment]["issuer"]
+
+      settings.idp_sso_target_url = "http://localhost:3000/saml/auth?issuer=#{settings.issuer}#{id.nil? ? '' : '&id='+id.to_s}"
       
       # # local consume test
       # # settings.assertion_consumer_service_url  = "http://localhost:3000/saml/consume"

@@ -9,24 +9,26 @@ class SamlIdpController < ApplicationController
   end
 
   def create
-    #@user = WellpointUser.find_by_id(params[:wellpoint_user][:id])
-    # @user = WellpointUser.first
-    # render :action => 'new' if @user.nil?
-    
-    #@saml_response = new_encode_SAMLResponse(@user.id, {}, get_custom_attributes(@user))
-    @saml_response = WELLPOINT_SAML_RESPONSE
-    
+    # if params[:id]
+    #   @user = WellpointUser.find_by_id(params[:id])
+    #   @saml_response = new_encode_SAMLResponse(@user.id, {issuer_uri: params[:issuer]}, get_custom_attributes(@user))
+    # else
+      @user = WellpointUser.first
+      @saml_response = WELLPOINT_SAML_RESPONSE 
+    # end
+
+    render :action => 'new' if @user.nil?
+
     render :action => 'response'
   end
 
   def new_encode_SAMLResponse(nameID, opts = {}, custom_attributes = "")
-    
     now = Time.now.utc
     response_id, reference_id = UUID.generate, UUID.generate
     audience_uri = opts[:audience_uri] || saml_acs_url[/^(.*?\/\/.*?\/)/, 1]
     issuer_uri = opts[:issuer_uri] || (defined?(request) && request.url) || "http://example.com"
 
-    assertion = %[<Assertion xmlns="urn:oasis:names:tc:SAML:2.0:assertion" ID="_#{reference_id}" IssueInstant="#{now.iso8601}" Version="2.0"><Issuer>#{issuer_uri}</Issuer><Subject><NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">#{nameID}</NameID><SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><SubjectConfirmationData InResponseTo="#{@saml_request_id}" NotOnOrAfter="#{(now+3*60).iso8601}" Recipient="#{@saml_acs_url}"></SubjectConfirmationData></SubjectConfirmation></Subject><Conditions NotBefore="#{(now-5).iso8601}" NotOnOrAfter="#{(now+60*60).iso8601}"><AudienceRestriction><Audience>#{audience_uri}</Audience></AudienceRestriction></Conditions><AuthnStatement AuthnInstant="#{now.iso8601}" SessionIndex="_#{reference_id}"><AuthnContext><AuthnContextClassRef>urn:federation:authentication:windows</AuthnContextClassRef></AuthnContext></AuthnStatement><AttributeStatement><Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"><AttributeValue>#{nameID}</AttributeValue></Attribute>#{custom_attributes}</AttributeStatement></Assertion>]
+    assertion = %[<ns2:Assertion xmlns:ns2="urn:oasis:names:tc:SAML:2.0:assertion" ID="_#{reference_id}" IssueInstant="#{now.iso8601}" Version="2.0"><ns2:Issuer>#{issuer_uri}</ns2:Issuer><ns2:Subject><ns2:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">#{nameID}</ns2:NameID><ns2:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><ns2:SubjectConfirmationData InResponseTo="#{@saml_request_id}" NotOnOrAfter="#{(now+3*60).iso8601}" Recipient="#{@saml_acs_url}"></ns2:SubjectConfirmationData></ns2:SubjectConfirmation></ns2:Subject><ns2:Conditions NotBefore="#{(now-5).iso8601}" NotOnOrAfter="#{(now+60*60).iso8601}"><ns2:AudienceRestriction><ns2:Audience>#{audience_uri}</ns2:Audience></ns2:AudienceRestriction></ns2:Conditions><ns2:AuthnStatement AuthnInstant="#{now.iso8601}" SessionIndex="_#{reference_id}"><ns2:AuthnContext><ns2:AuthnContextClassRef>urn:federation:authentication:windows</ns2:AuthnContextClassRef></ns2:AuthnContext></ns2:AuthnStatement><ns2:AttributeStatement><ns2:Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"><ns2:AttributeValue>#{nameID}</ns2:AttributeValue></ns2:Attribute>#{custom_attributes}</ns2:AttributeStatement></ns2:Assertion>]
 
     digest_value = Base64.encode64(algorithm.digest(assertion)).gsub(/\n/, '')
 
@@ -40,27 +42,28 @@ class SamlIdpController < ApplicationController
 
     xml = %[<samlp:Response ID="_#{response_id}" Version="2.0" IssueInstant="#{now.iso8601}" Destination="#{@saml_acs_url}" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="#{@saml_request_id}" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"><Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">#{issuer_uri}</Issuer><samlp:Status><samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" /></samlp:Status>#{assertion_and_signature}</samlp:Response>]
 
+    binding.pry
+
     Base64.encode64(xml)
   end
 
   private 
 
-    # def get_custom_attributes(user)
-    #   attributes = [
-    #     { name: 'hc_id',        value: user.hc_id.to_s },
-    #     { name: 'cntrct_id',    value: user.cntrct_id.to_s },
-    #     { name: 'mbr_sqnc_nbr', value: user.mbr_sqnc_nbr.to_s }
-    #   ]
+    def get_custom_attributes(user)
+      attributes = [
+        { name: 'SBSCRBR_ID',   value: user.hc_id.to_s },
+        { name: 'MBR_SQNC_NBR', value: user.mbr_sqnc_nbr.to_s }
+      ]
 
-    #   attribute_statement = ''
-    #   if attributes.count > 0
-    #     attributes.each do |a|
-    #       attribute_statement += %[<Attribute Name="#{a[:name]}" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"><AttributeValue>#{a[:value]}</AttributeValue></Attribute>] 
-    #     end
-    #     attribute_statement
-    #   end
+      attribute_statement = ''
+      if attributes.count > 0
+        attributes.each do |a|
+          attribute_statement += %[<ns2:Attribute Name="#{a[:name]}" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:basic"><ns2:AttributeValue>#{a[:value]}</ns2:AttributeValue></ns2:Attribute>] 
+        end
+        attribute_statement
+      end
 
-    #   return attribute_statement
-    # end
+      return attribute_statement
+    end
 
 end
