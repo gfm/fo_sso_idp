@@ -4,7 +4,7 @@ WellpointUser.delete_all
 
 eligibility_updates = []
 csv_data = File.open(Rails.root.join("wp_user_mock_data.csv"))
-CSV.foreach(csv_data,  :col_sep => "|",  :quote_char => '"',  :headers =>  :first_row,  :return_headers => false) do |row|
+CSV.foreach(csv_data,  :col_sep => ",",  :quote_char => '"',  :headers =>  :first_row,  :return_headers => false) do |row|
   values = {}
   [ 
     :id, 

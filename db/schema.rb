@@ -56,4 +56,37 @@ ActiveRecord::Schema.define(:version => 20121021145714) do
     t.boolean "grp_cvr_fee"
   end
 
+  create_table "wellpoint_users_new", :id => false, :force => true do |t|
+    t.integer "id"
+    t.integer "cntrct_id",              :limit => 8
+    t.string  "hc_id"
+    t.integer "mbr_sqnc_nbr"
+    t.string  "rcrd_stts_cd"
+    t.string  "lst_nm"
+    t.string  "frst_nm"
+    t.string  "mid_init_nm"
+    t.string  "gndr_cd"
+    t.string  "mbr_rltnshp_cd"
+    t.string  "brth_dt"
+    t.integer "ssn",                    :limit => 8
+    t.string  "address_1"
+    t.string  "address_2"
+    t.string  "city"
+    t.string  "state"
+    t.integer "zip_1"
+    t.integer "bill_rel"
+    t.integer "emp_status"
+    t.string  "emp_hr_dt"
+    t.string  "src_grp_nmb"
+    t.string  "src_subgrp_nbr"
+    t.string  "mbr_incentive_efctv_dt"
+    t.string  "cfmcn_prod_id"
+    t.string  "hpcc"
+    t.integer "incntv_prdct_cd"
+    t.integer "mbrshp_sor_cd"
+    t.string  "mbr_status"
+    t.string  "mbr_incentive_trmn_dt"
+    t.integer "grp_cvr_fee"
+  end
+
 end

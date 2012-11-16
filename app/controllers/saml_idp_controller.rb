@@ -1,3 +1,6 @@
+require "rexml/document"
+require "rexml/xpath"
+
 class SamlIdpController < ApplicationController
   include SamlIdp::Controller
 
@@ -9,13 +12,13 @@ class SamlIdpController < ApplicationController
   end
 
   def create
-    # if params[:id]
-    #   @user = WellpointUser.find_by_id(params[:id])
-    #   @saml_response = new_encode_SAMLResponse(@user.id, {issuer_uri: params[:issuer]}, get_custom_attributes(@user))
-    # else
+    if params[:id]
+      @user = WellpointUser.find_by_id(params[:id])
+      @saml_response = new_encode_SAMLResponse(@user.id, {issuer_uri: params[:issuer]}, get_custom_attributes(@user))
+    else
       @user = WellpointUser.first
       @saml_response = WELLPOINT_SAML_RESPONSE 
-    # end
+    end
 
     render :action => 'new' if @user.nil?
 
@@ -38,11 +41,9 @@ class SamlIdpController < ApplicationController
 
     signature = %[<ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">#{signed_info}<ds:SignatureValue>#{signature_value}</ds:SignatureValue><KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><ds:X509Data><ds:X509Certificate>#{self.x509_certificate}</ds:X509Certificate></ds:X509Data></KeyInfo></ds:Signature>]
 
-    assertion_and_signature = assertion.sub(/Issuer\>\<Subject/, "Issuer>#{signature}<Subject")
+    assertion_and_signature = assertion.sub(/ns2:Issuer\>\<ns2:Subject/, "ns2:Issuer>#{signature}<ns2:Subject")
 
-    xml = %[<samlp:Response ID="_#{response_id}" Version="2.0" IssueInstant="#{now.iso8601}" Destination="#{@saml_acs_url}" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="#{@saml_request_id}" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"><Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">#{issuer_uri}</Issuer><samlp:Status><samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" /></samlp:Status>#{assertion_and_signature}</samlp:Response>]
-
-    binding.pry
+    xml = %[<Response ID="_#{response_id}" Version="2.0" IssueInstant="#{now.iso8601}" Destination="#{@saml_acs_url}" Consent="urn:oasis:names:tc:SAML:2.0:consent:unspecified" InResponseTo="#{@saml_request_id}" xmlns="urn:oasis:names:tc:SAML:2.0:protocol"><ns1:Issuer xmlns:ns1="urn:oasis:names:tc:SAML:2.0:assertion">#{issuer_uri}</ns1:Issuer><Status><StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" /></Status>#{assertion_and_signature}</Response>]
 
     Base64.encode64(xml)
   end

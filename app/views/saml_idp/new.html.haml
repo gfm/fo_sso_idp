@@ -1,21 +1,14 @@
 .span4
   .well
     = simple_form_for :wellpoint_user, url: "/saml/init", method: :post do |f|
-      /#= hidden_field_tag 'SAMLRequest', params[:SAMLRequest]
       
       %label Select Environment
-      %p= f.input :environment, collection: {"qa1.myfitorbit.com" => "myfitorbitqa", "fitorbit.dev" => "development"}, label: false, input_html: {value: '1'}
-      %label Select Wellpoint Test User
-      / %p= f.input :id, collection: WellpointUser.all, label: false
+      %p= f.input :environment, collection: {"qa1.myfitorbit.com" => "myfitorbitqa", "fitorbit.dev" => "development"}, label: false, input_html: {value: '1'}, input_html: {class: "chosen-select", data: {placeholder: "Select Test Environment"}}
+      
+      %p
+        %select.chosen-select{name:"#{f.object_name}[id]", data:{placeholder: "Select Wellpoint User"}}
+          %option  
+          - WellpointUser.all.each do |o|
+            %option{ value: o.id, data:{custom_html: wp_user_html(o)} }= o.name 
+      
       %p= f.submit "Test SSO Login", class: "btn btn-success"
-
-
-    / %div{ :style => "visibility:hidden;"}
-    /   = form_tag("/saml/auth") do
-    /     = hidden_field_tag("SAMLRequest", params[:SAMLRequest])
-    /     = submit_tag "Submit"
-
-    / :javascript
-    /   $(document).ready(function(){
-    /     document.forms[0].submit();
-    /   })
