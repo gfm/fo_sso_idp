@@ -1,0 +1,1 @@
+SSO_SETTINGS = YAML.load(File.read(File.expand_path('../../sso_settings.yml', __FILE__)))

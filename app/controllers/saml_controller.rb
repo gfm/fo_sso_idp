@@ -2,7 +2,7 @@ class SamlController < ApplicationController
 
     def init
       request = Onelogin::Saml::Authrequest.new
-      redirect_to(request.create(saml_settings))
+      redirect_to(request.create(saml_settings(params[:wellpoint_user][:environment])))
     end
 
     def consume
@@ -12,8 +12,6 @@ class SamlController < ApplicationController
 
       valid = response.is_valid?
       response.attributes
-
-      binding.pry
 
       if valid && user = WellpointUser.find_by_id(response.name_id)
         authorize_success(user)
@@ -34,30 +32,34 @@ class SamlController < ApplicationController
 
     private
 
-    def saml_settings
+    def saml_settings(environment)
       settings = Onelogin::Saml::Settings.new
+
       settings.idp_sso_target_url              = "http://localhost:3000/saml/auth"
 
-      # local consume test
-      # settings.assertion_consumer_service_url  = "http://localhost:3000/saml/consume"
-      # settings.issuer                         = "http://localhost:3000"
-
-      # fitorbit.dev consume test
-      # settings.assertion_consumer_service_url = "http://fitorbit.dev/saml/consume"
-      # settings.issuer                         = "http://fitorbit.dev"
-
-      # qa.myfitorbit.com consume test
-      settings.assertion_consumer_service_url = "https://qa1.myfitorbit.com/saml/consume"
-      settings.issuer                         = "saml.uat.anthem.com:FitOrbit"
+      settings.assertion_consumer_service_url = SSO_SETTINGS[environment]["assertion_consumer_service_url"]
+      settings.issuer                         = SSO_SETTINGS[environment]["issuer"]
       
-      # #Sample Saml Response
+      # # local consume test
+      # # settings.assertion_consumer_service_url  = "http://localhost:3000/saml/consume"
+      # # settings.issuer                         = "http://localhost:3000"
+
+      # # fitorbit.dev consume test
+      # # settings.assertion_consumer_service_url = "http://fitorbit.dev/saml/consume"
+      # # settings.issuer                         = "http://fitorbit.dev"
+
+      # # qa.myfitorbit.com consume test
+      # settings.assertion_consumer_service_url = "https://qa1.myfitorbit.com/saml/consume"
+      # settings.issuer                         = "saml.uat.anthem.com:FitOrbit"
+      
+      # # #Sample Saml Response
+      # # settings.name_identifier_format         = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
+      # # settings.idp_cert_fingerprint           = "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D"
+      
+      # # #WP Saml Response
       # settings.name_identifier_format         = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-      # settings.idp_cert_fingerprint           = "9E:65:2E:03:06:8D:80:F2:86:C7:6C:77:A1:D9:14:97:0A:4D:F4:4D"
-      
-      # #WP Saml Response
-      settings.name_identifier_format         = "urn:oasis:names:tc:SAML:2.0:nameid-format:transient"
-      settings.idp_cert_fingerprint           = "05:AF:2D:72:4F:0D:5E:E9:2D:49:E8:4F:DC:19:5D:6C:43:67:25:47"
-      settings.private_key                    = "/Users/nate/Downloads/qa.myfitorbit.key"
+      # settings.idp_cert_fingerprint           = "05:AF:2D:72:4F:0D:5E:E9:2D:49:E8:4F:DC:19:5D:6C:43:67:25:47"
+      # settings.private_key                    = "/Users/nate/Downloads/qa.myfitorbit.key"
 
       settings
     end

@@ -1,5 +1,7 @@
 require "csv"
 
+WellpointUser.delete_all
+
 eligibility_updates = []
 csv_data = File.open(Rails.root.join("wp_user_mock_data.csv"))
 CSV.foreach(csv_data,  :col_sep => "|",  :quote_char => '"',  :headers =>  :first_row,  :return_headers => false) do |row|
@@ -42,7 +44,6 @@ CSV.foreach(csv_data,  :col_sep => "|",  :quote_char => '"',  :headers =>  :firs
   eligibility_updates << values
 end
 
-WellpointUser.delete_all
 #WellpointUser.connection.execute('ALTER TABLE wellpoint_users AUTO_INCREMENT = 1')
 eligibility_updates.each do |eligibility_update|
   WellpointUser.create(eligibility_update)

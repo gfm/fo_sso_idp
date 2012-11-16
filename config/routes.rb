@@ -3,12 +3,12 @@ FoSsoIdp::Application.routes.draw do
   resources :users
 
   get   '/login' => 'login#new'
-  get   '/saml/auth' => 'saml_idp#new'
-  post  '/saml/auth' => 'saml_idp#create'
+  get   '/saml/new' => 'saml_idp#new'
+  get  '/saml/auth' => 'saml_idp#create'
 
-  get   '/saml/init' => 'saml#init'
+  post  '/saml/init' => 'saml#init'
   post  '/saml/consume' => 'saml#consume'
   
-  root  :to => 'saml#init'
+  root  :to => 'saml_idp#new'
 
 end
