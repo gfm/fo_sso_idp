@@ -37,11 +37,13 @@ class CreateWellpointUserTable < ActiveRecord::Migration
       t.string  :src_subgrp_nbr,        limit: 15
       t.date    :prchsr_org_efctv_dt
       t.date    :prchsr_org_trmntn_dt
-      t.date    :rnwl_dt
+      t.date    :rnwl_dtc 
       t.date    :mbr_incentive_efctv_dt
       t.date    :mbr_incentive_trmn_dt
       t.string  :incntv_prdct_cd,       limit: 20
       t.boolean :grp_cvr_fee
+      t.string  :reg_pmt_src,           limit: 8
+      t.string  :token,                 limit: 16
     end
   end
 

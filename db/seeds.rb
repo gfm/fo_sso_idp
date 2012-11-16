@@ -37,7 +37,8 @@ CSV.foreach(csv_data,  :col_sep => ",",  :quote_char => '"',  :headers =>  :firs
     :mbrshp_sor_cd, 
     :mbr_status, 
     :mbr_incentive_trmn_dt, 
-    :grp_cvr_fee
+    :grp_cvr_fee,
+    :reg_pmt_src
   ].each_with_index do |prop, index|
     values[prop] = row[index]
   end
