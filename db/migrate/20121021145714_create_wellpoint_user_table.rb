@@ -1,6 +1,22 @@
-class AddEligibilityColumnsToUser < ActiveRecord::Migration
+class CreateWellpointUserTable < ActiveRecord::Migration
+  
   def change
-    change_table :users do |t|
+    create_table :wellpoint_users do |t|
+      t.integer :cntrct_id
+      t.integer :user_id
+      t.integer :ssn
+      t.string  :address_1
+      t.string  :address_2
+      t.string  :city
+      t.string  :state
+      t.string  :zip_1
+      t.string  :zip_2
+      t.integer :bill_rel,              limit: 2
+      t.integer :emp_status,            limit: 2
+      t.date    :emp_hr_dt
+      t.integer :cfmcn_prod_id
+      t.integer :hpcc
+      t.integer :mbr_status,             limit: 2
       t.string  :rcrd_stts_cd,          limit: 3
       t.string  :mbr_key,               limit: 32
       t.string  :sbscrbr_id,            limit: 15
@@ -28,4 +44,5 @@ class AddEligibilityColumnsToUser < ActiveRecord::Migration
       t.boolean :grp_cvr_fee
     end
   end
+
 end

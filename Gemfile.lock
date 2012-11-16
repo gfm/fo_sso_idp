@@ -1,5 +1,7 @@
-PATH
-  remote: /Users/nate/Projects/synctree/ruby-saml
+GIT
+  remote: git://github.com/synctree/ruby-saml.git
+  revision: 9821f75c21c8bb7c02382f9892d701f86bb3afcd
+  branch: feature/encrypted_assertions
   specs:
     ruby-saml (0.6.0)
       canonix (= 0.1.1)
