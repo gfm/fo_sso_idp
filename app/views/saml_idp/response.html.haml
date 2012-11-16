@@ -1,0 +1,9 @@
+%div{ :style => "visibility:hidden;"}
+  = form_tag(@saml_acs_url) do
+    = hidden_field_tag("SAMLResponse", @saml_response)
+    = submit_tag "Submit"
+
+:javascript
+  $(document).ready(function(){
+    document.forms[0].submit();
+  })

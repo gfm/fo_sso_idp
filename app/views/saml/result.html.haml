@@ -1,0 +1,5 @@
+%h4 Saml Result
+%b= "Login #{@result}"
+%br
+/ %p
+/   = Nokogiri.XML(@response.instance_variable_get("@xml").canonicalize){|config| config.default_xml.noblanks}.to_xml(:indent => 2)

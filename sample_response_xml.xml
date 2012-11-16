@@ -1,0 +1,105 @@
+<samlp:Response ID=\"_701ff410-f91e-012f-1ff2-705681b44ba5\" Version=\"2.0\" IssueInstant=\"2012-10-15T17:48:23Z\" Destination=\"http://localhost:3000/saml/consume\" Consent=\"urn:oasis:names:tc:SAML:2.0:consent:unspecified\" InResponseTo=\"_6f106150-f91e-012f-1ff6-705681b44ba5\" xmlns:samlp=\"urn:oasis:names:tc:SAML:2.0:protocol\">
+  
+  <Issuer xmlns=\"urn:oasis:names:tc:SAML:2.0:assertion\">
+    http://localhost:3000/saml/auth
+  </Issuer>
+  
+  <samlp:Status>
+    <samlp:StatusCode Value=\"urn:oasis:names:tc:SAML:2.0:status:Success\" />
+  </samlp:Status>
+
+  <Assertion xmlns=\"urn:oasis:names:tc:SAML:2.0:assertion\" ID=\"_701ff520-f91e-012f-1ff2-705681b44ba5\" IssueInstant=\"2012-10-15T17:48:23Z\" Version=\"2.0\">
+    
+    <Issuer>
+      http://localhost:3000/saml/auth
+    </Issuer>
+    
+    <ds:Signature xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\">
+      <ds:SignedInfo xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\">
+        <ds:CanonicalizationMethod Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\">
+        </ds:CanonicalizationMethod>
+        <ds:SignatureMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#rsa-sha1\">
+        </ds:SignatureMethod>
+        <ds:Reference URI=\"#_701ff520-f91e-012f-1ff2-705681b44ba5\">
+          <ds:Transforms>
+            <ds:Transform Algorithm=\"http://www.w3.org/2000/09/xmldsig#enveloped-signature\">
+            </ds:Transform>
+            <ds:Transform Algorithm=\"http://www.w3.org/2001/10/xml-exc-c14n#\">
+            </ds:Transform>
+          </ds:Transforms>
+          <ds:DigestMethod Algorithm=\"http://www.w3.org/2000/09/xmldsig#sha1\">
+          </ds:DigestMethod>
+          <ds:DigestValue>
+            rR+MXJ5BbgE6nWq3ryHY9h6GLeQ=
+          </ds:DigestValue>
+        </ds:Reference>
+      </ds:SignedInfo>
+      <ds:SignatureValue>
+        saA3cWqJ0tgtI90PLhdP/svPcgBhyKRNXHzs56WMGWixWlYPbb3Mc5pRYqfmeVwFOZZgrGHLwZRQaqMXRcmbFX1/SndBjV/84dnsWW4lyR7nuBI0YO8vfSsDXHQMKcPC2poUpYEwIadnsOsVRz8hicbZOGQnl9/l//2wTuh/9r0=
+      </ds:SignatureValue>
+      <KeyInfo xmlns=\"http://www.w3.org/2000/09/xmldsig#\">
+        <ds:X509Data>
+          <ds:X509Certificate>
+            LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURxekNDQXhTZ0F3SUJBZ0lCQVRBTkJna3Foa2lHOXcwQkFRc0ZBRENCaGpFTE1Ba0dBMVVFQmhNQ1FWVXgKRERBS0JnTlZCQWdUQTA1VFZ6RVBNQTBHQTFVRUJ4TUdVM2xrYm1WNU1Rd3dDZ1lEVlFRS0RBTlFTVlF4Q1RBSApCZ05WQkFzTUFERVlNQllHQTFVRUF3d1BiR0YzY21WdVkyVndhWFF1WTI5dE1TVXdJd1lKS29aSWh2Y05BUWtCCkRCWnNZWGR5Wlc1alpTNXdhWFJBWjIxaGFXd3VZMjl0TUI0WERURXlNRFF5T0RBeU1qSXlPRm9YRFRNeU1EUXkKTXpBeU1qSXlPRm93Z1lZeEN6QUpCZ05WQkFZVEFrRlZNUXd3Q2dZRFZRUUlFd05PVTFjeER6QU5CZ05WQkFjVApCbE41Wkc1bGVURU1NQW9HQTFVRUNnd0RVRWxVTVFrd0J3WURWUVFMREFBeEdEQVdCZ05WQkFNTUQyeGhkM0psCmJtTmxjR2wwTG1OdmJURWxNQ01HQ1NxR1NJYjNEUUVKQVF3V2JHRjNjbVZ1WTJVdWNHbDBRR2R0WVdsc0xtTnYKYlRDQm56QU5CZ2txaGtpRzl3MEJBUUVGQUFPQmpRQXdnWWtDZ1lFQXVCeXdQTmxDMUZvcEdMWWZGOTZTb3RpSwo4Tmo2L25XMDg0TzRvbVJNaWZ6eTd4OTU1UkxFeTY3M3EyYWlKTkIzTHZFNlh2a3Q5Y0d0eHROb09YdzFnMlV2CkhLcGxkUWJyNmJPRWpMTmVETlc3ajBvYitKclJ2QVVPSzlDUmdkeXc1TUM2bHdxVlFRNUMxRG5hVC8yZlNCRmoKYXNCRlRSMjRkRXBmVHk4SGZLRUNBd0VBQWFPQ0FTVXdnZ0VoTUFrR0ExVWRFd1FDTUFBd0N3WURWUjBQQkFRRApBZ1VnTUIwR0ExVWREZ1FXQkJRTkJHbW10M3l0S3BjSmFCYVlOYm55VTJ4a2F6QVRCZ05WSFNVRUREQUtCZ2dyCkJnRUZCUWNEQVRBZEJnbGdoa2dCaHZoQ0FRMEVFQllPVkdWemRDQllOVEE1SUdObGNuUXdnYk1HQTFVZEl3U0IKcXpDQnFJQVVEUVJwcHJkOHJTcVhDV2dXbURXNThsTnNaR3VoZ1l5a2dZa3dnWVl4Q3pBSkJnTlZCQVlUQWtGVgpNUXd3Q2dZRFZRUUlFd05PVTFjeER6QU5CZ05WQkFjVEJsTjVaRzVsZVRFTU1Bb0dBMVVFQ2d3RFVFbFVNUWt3CkJ3WURWUVFMREFBeEdEQVdCZ05WQkFNTUQyeGhkM0psYm1ObGNHbDBMbU52YlRFbE1DTUdDU3FHU0liM0RRRUoKQVF3V2JHRjNjbVZ1WTJVdWNHbDBRR2R0WVdsc0xtTnZiWUlCQVRBTkJna3Foa2lHOXcwQkFRc0ZBQU9CZ1FBRQpjVlVQQlg3dVptenFaSmZ5K3RVUE9UNUltTlFqOFZFMmxlcmhuRmpuR1BIbUhJcWhwemdud0hRdWpKZnMvYTMwCjlXbTVxd2NDYUMxZU81Y1dqY0cweDNPamRsbHNnWURhdGw1R0F1bXRCeDhKM05oV1JxTlVnaXRDSWtRbHhISXcKVWZnUWFDdXNoWWdEREw1WWJJUWErK2VnQ2dwSVorVDBEajVvUmV3Ly9BPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+          </ds:X509Certificate>
+        </ds:X509Data>
+      </KeyInfo>
+    </ds:Signature>
+    
+    <Subject>
+      <NameID Format=\"urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress\">
+        nate.gardner+samltest@synctree.com
+      </NameID>
+      <SubjectConfirmation Method=\"urn:oasis:names:tc:SAML:2.0:cm:bearer\">
+        <SubjectConfirmationData InResponseTo=\"_6f106150-f91e-012f-1ff6-705681b44ba5\" NotOnOrAfter=\"2012-10-15T17:51:23Z\" Recipient=\"http://localhost:3000/saml/consume\">
+        </SubjectConfirmationData>
+      </SubjectConfirmation>
+    </Subject>
+    
+    <Conditions NotBefore=\"2012-10-15T17:48:18Z\" NotOnOrAfter=\"2012-10-15T18:48:23Z\">
+      <AudienceRestriction>
+        <Audience>
+          http://localhost:3000/
+        </Audience>
+      </AudienceRestriction>
+    </Conditions>
+    
+    <AttributeStatement>
+      <Attribute Name=\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress\">
+        <AttributeValue>
+          nate.gardner+samltest@synctree.com
+        </AttributeValue>
+      </Attribute>
+    </AttributeStatement>
+    
+    <AuthnStatement AuthnInstant=\"2012-10-15T17:48:23Z\" SessionIndex=\"_701ff520-f91e-012f-1ff2-705681b44ba5\">
+      <AuthnContext>
+        <AuthnContextClassRef>
+          urn:federation:authentication:windows
+        </AuthnContextClassRef>
+      </AuthnContext>
+      
+      <AttributeStatement>
+        
+        <Attribute Name='SBSCRBR_ID'>
+          <AttributeValue xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:type='xs:string'>
+            1
+          </AttributeValue>
+        </Attribute>
+    
+        <Attribute Name='MBR_SQNC_NBR'>
+          <AttributeValue xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:type='xs:string'>
+            2
+          </AttributeValue>
+        </Attribute>
+
+        <Attribute Name='MBRSHP_SOR_CD'>
+          <AttributeValue xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:type='xs:string'>
+            3
+          </AttributeValue>
+        </Attribute>
+
+      </AttributeStatement>
+    </AuthnStatement>
+  </Assertion>
+</samlp:Response>
