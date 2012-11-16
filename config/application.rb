@@ -18,10 +18,10 @@ module FoSsoIdp
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)
 
-    config.autoload_paths += %W(/Users/nate/Projects/synctree/ruby-saml/lib)
-    ActiveSupport::Dependencies.explicitly_unloadable_constants << 'XMLSecurity'
-    ActiveSupport::Dependencies.explicitly_unloadable_constants << 'Settings'
-    ActiveSupport::Dependencies.explicitly_unloadable_constants << 'Response'
+    # config.autoload_paths += %W(/Users/nate/Projects/synctree/ruby-saml/lib)
+    # ActiveSupport::Dependencies.explicitly_unloadable_constants << 'XMLSecurity'
+    # ActiveSupport::Dependencies.explicitly_unloadable_constants << 'Settings'
+    # ActiveSupport::Dependencies.explicitly_unloadable_constants << 'Response'
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
