@@ -9,7 +9,6 @@ gem 'ruby-saml-idp'
 gem 'simple_form' 
 gem 'mysql2'
 gem "activerecord-sqlserver-adapter", "~> 3.2.9"
-gem 'sqlite3'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
@@ -21,10 +20,15 @@ group :assets do
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-stack_explorer'
   gem 'pry-exception_explorer'
+end
+
+group :production do
+  gem 'pg'
 end
 
 gem 'jquery-rails'
