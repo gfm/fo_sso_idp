@@ -2,7 +2,7 @@ class CreateWellpointUserTable < ActiveRecord::Migration
   
   def change
     create_table :wellpoint_users do |t|
-      t.integer :cntrct_id
+      t.integer :cntrct_id,            limit: 8
       t.integer :user_id
       t.integer :ssn
       t.string  :address_1
