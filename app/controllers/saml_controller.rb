@@ -39,7 +39,7 @@ class SamlController < ApplicationController
       settings.assertion_consumer_service_url = SSO_SETTINGS[environment]["assertion_consumer_service_url"]
       settings.issuer                         = SSO_SETTINGS[environment]["issuer"]
 
-      settings.idp_sso_target_url = "http://localhost:3000/saml/auth?issuer=#{settings.issuer}#{id.nil? ? '' : '&id='+id.to_s}"
+      settings.idp_sso_target_url = "#{request.protocol}#{request.host_with_port}/saml/auth?issuer=#{settings.issuer}#{id.nil? ? '' : '&id='+id.to_s}"
       
       # # local consume test
       # # settings.assertion_consumer_service_url  = "http://localhost:3000/saml/consume"

@@ -6,8 +6,8 @@ defaults: &defaults
   
 development:
   <<: *defaults
-  assertion_consumer_service_url: "http://fitorbit.dev/saml/consume"
-  issuer: "http://fitorbit.dev"
+  assertion_consumer_service_url: "http://myfitorbit.dev/saml/consume"
+  issuer: "http://myfitorbit.dev"
 
 myfitorbitqa:
   <<: *defaults
