@@ -14,7 +14,8 @@
 ActiveRecord::Schema.define(:version => 20121021145714) do
 
   create_table "wellpoint_users", :force => true do |t|
-    t.integer "cntrct_id"
+    t.boolean "cancelled"
+    t.integer "cntrct_id",              :limit => 8
     t.integer "user_id"
     t.integer "ssn"
     t.string  "address_1"

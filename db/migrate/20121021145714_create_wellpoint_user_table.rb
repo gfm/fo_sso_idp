@@ -2,6 +2,7 @@ class CreateWellpointUserTable < ActiveRecord::Migration
   
   def change
     create_table :wellpoint_users do |t|
+      t.boolean :cancelled
       t.integer :cntrct_id,            limit: 8
       t.integer :user_id
       t.integer :ssn
