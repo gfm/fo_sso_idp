@@ -1,0 +1,11 @@
+.chosen-option
+  .first-line
+    %b= wp_user.name
+    .additional-line
+      %table.table.table-condensed
+        %tr
+          %td Eligible
+          %td= "#{wp_user.is_fully_eligible? ? 'Yes' : 'No'}"
+        %tr
+          %td Payment
+          %td= "#{wp_user.reg_pmt_src}"

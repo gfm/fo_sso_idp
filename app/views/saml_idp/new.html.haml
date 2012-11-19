@@ -1,14 +1,14 @@
 .span4
   .well
-    = simple_form_for :wellpoint_user, url: "/saml/init", method: :post do |f|
-      
-      %label Select Environment
-      %p= f.input :environment, collection: {"qa1.myfitorbit.com" => "myfitorbitqa", "myfitorbit.dev" => "development"}, label: false, input_html: {value: '1'}, input_html: {class: "chosen-select", data: {placeholder: "Select Test Environment"}}
-      
-      %p
-        %select.chosen-select{name:"#{f.object_name}[id]", data:{placeholder: "Select Wellpoint User"}}
-          %option  
-          - WellpointUser.all.each do |o|
-            %option{ value: o.id, data:{custom_html: wp_user_html(o)} }= o.name 
-      
-      %p= f.submit "Test SSO Login", class: "btn btn-success"
+    .row-fluid
+      = simple_form_for :wellpoint_user, url: "/saml/init", method: :post do |f|
+              
+        %p= f.input :environment, collection: {"qa1.myfitorbit.com" => "myfitorbitqa", "myfitorbit.dev" => "development"}, label: false, input_html: {value: '1'}, input_html: {class: "chosen-select", data: {placeholder: "Select Test Environment"}}
+        
+        %p
+          %select.chosen-select{name:"#{f.object_name}[id]", data:{placeholder: "Select Wellpoint User"}}
+            %option  
+            - WellpointUser.all.each do |o|
+              %option{ value: o.id, data:{custom_html: (render partial: "users/info", locals: {wp_user: o}).html_safe} }= o.name 
+        
+        %p= f.submit "Test SSO Login", class: "btn btn-success"

@@ -14,12 +14,23 @@ class WellpointUser < ActiveRecord::Base
   end
 
   def is_eligible?
-    (self.mbr_incentive_trmn_dt.nil? || self.mbr_incentive_trmn_dt > Date.today) &&
-    (self.mbr_incentive_efctv_dt && self.mbr_incentive_efctv_dt <= Date.today)
+    member_eligible? && group_eligible?
   end
 
   def is_old_enough?
     self.brth_dt && self.brth_dt <= (Date.today - 18.years)
+  end
+
+  def member_eligible?
+    today = Date.today
+    (mbr_incentive_trmn_dt.nil? || mbr_incentive_trmn_dt > today) &&
+    (!mbr_incentive_efctv_dt.nil? && mbr_incentive_efctv_dt <= today)
+  end
+
+  def group_eligible?
+    today = Date.today
+    (prchsr_org_trmntn_dt.nil? || prchsr_org_trmntn_dt > today) &&
+    (!prchsr_org_efctv_dt.nil? && prchsr_org_efctv_dt <= today)
   end
 
 end
