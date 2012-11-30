@@ -14,7 +14,7 @@ class WellpointUser < ActiveRecord::Base
   end
 
   def is_eligible?
-    member_eligible? && group_eligible?
+    member_eligible?
   end
 
   def is_old_enough?
@@ -25,12 +25,6 @@ class WellpointUser < ActiveRecord::Base
     today = Date.today
     (mbr_incentive_trmn_dt.nil? || mbr_incentive_trmn_dt > today) &&
     (!mbr_incentive_efctv_dt.nil? && mbr_incentive_efctv_dt <= today)
-  end
-
-  def group_eligible?
-    today = Date.today
-    (prchsr_org_trmntn_dt.nil? || prchsr_org_trmntn_dt > today) &&
-    (!prchsr_org_efctv_dt.nil? && prchsr_org_efctv_dt <= today)
   end
 
 end

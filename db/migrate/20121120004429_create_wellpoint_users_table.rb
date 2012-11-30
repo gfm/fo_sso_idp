@@ -1,4 +1,4 @@
-class CreateWellpointUserTable < ActiveRecord::Migration
+class CreateWellpointUsersTable < ActiveRecord::Migration
   
   def change
     create_table :wellpoint_users do |t|

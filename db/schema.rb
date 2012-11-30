@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121021145714) do
+ActiveRecord::Schema.define(:version => 20121130000711) do
 
   create_table "wellpoint_users", :force => true do |t|
     t.boolean "cancelled"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(:version => 20121021145714) do
     t.boolean "grp_cvr_fee"
     t.string  "reg_pmt_src",            :limit => 8
     t.string  "token",                  :limit => 16
+    t.date    "grp_incentive_efctv_dt"
+    t.date    "grp_incentive_trmn_dt"
   end
 
 end
