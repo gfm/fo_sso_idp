@@ -3,7 +3,7 @@
     .row-fluid
       = simple_form_for :wellpoint_user, url: "/saml/init", method: :post do |f|
               
-        %p= f.input :environment, collection: {"qa1.myfitorbit.com" => "myfitorbitqa", "myfitorbit.dev" => "development"}, label: false, input_html: {value: '1'}, input_html: {class: "chosen-select", data: {placeholder: "Select Test Environment"}}
+        %p= f.input :environment, collection: {"www.myfitorbit.com" => "myfitorbitprod", "qa1.myfitorbit.com" => "myfitorbitqa", "myfitorbit.dev" => "development"}, label: false, input_html: {value: '1'}, input_html: {class: "chosen-select", data: {placeholder: "Select Test Environment"}}
         
         %p
           %select.chosen-select{name:"#{f.object_name}[id]", data:{placeholder: "Select Wellpoint User"}}
