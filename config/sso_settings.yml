@@ -13,3 +13,8 @@ myfitorbitqa:
   <<: *defaults
   assertion_consumer_service_url: "https://qa1.myfitorbit.com/saml/consume"
   issuer: "http://qa1.myfitorbit.com"
+
+myfitorbitprod:
+  <<: *defaults
+  assertion_consumer_service_url: "https://www.myfitorbit.com/saml/consume"
+  issuer: "http://www.myfitorbit.com"
